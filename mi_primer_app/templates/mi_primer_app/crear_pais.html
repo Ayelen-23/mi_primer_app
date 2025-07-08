@@ -1,0 +1,20 @@
+{% extends 'padre.html' %}
+
+{% block title %} Agregar país {% endblock  %}
+
+{% block header%} <h1> Agregar País <h1> {% endblock %}
+
+
+
+{% block conten %}
+<h2>Agregar País</h2>
+
+<form method = "POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Guardar</button>
+</form>
+
+{% endblock %}
+

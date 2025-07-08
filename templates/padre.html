@@ -2,112 +2,176 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} Inicio {%endblock%} </title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
+      background-color: #f0f2f5;
       color: #333;
     }
 
     header {
-      background-color: #3f51b5;
+      background: linear-gradient(135deg, #4f46e5, #3b82f6);
       color: white;
-      padding: 2rem;
       text-align: center;
+      padding: 3rem 1rem;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
     }
 
     nav {
-      background-color: #303f9f;
-      text-align: center;
-      padding: 1rem 0;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
     }
 
     nav a {
-      color: white;
+      color: #4f46e5;
       text-decoration: none;
-      margin: 0 1rem;
       font-weight: bold;
       transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #ffeb3b;
+      color: #1d4ed8;
     }
 
-    .container {
+    main {
       max-width: 1000px;
-      margin: auto;
+      margin: 2rem auto;
       padding: 2rem;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     }
 
-    .post {
-      background-color: white;
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    section h2 {
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    section p {
+      line-height: 1.7;
+      color: #4b5563;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      flex: 1 1 300px;
+      background-color: #f9fafb;
       padding: 1.5rem;
-      margin-bottom: 2rem;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
     }
 
-    .post:hover {
-      transform: scale(1.02);
-    }
-
-    .post h2 {
-      margin-top: 0;
-      color: #3f51b5;
-    }
-
-    .post p {
-      line-height: 1.6;
+    .card:hover {
+      transform: translateY(-5px);
     }
 
     footer {
-      background-color: #3f51b5;
+      background-color: #1f2937;
       color: white;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .cards {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Bienvenido a Mi Blog</h1>
-    <p>Reflexiones, ideas y más</p>
+    {% block header %}
+    <h1>Bienvenido a Mi Sitio</h1>
+    <p></p>
+    {% endblock %}
   </header>
 
   <nav>
     <a href="#">Inicio</a>
-    <a href="#">Sobre mí</a>
+    <a href="#">Servicios</a>
+    <a href="#">Nosotros</a>
     <a href="#">Contacto</a>
   </nav>
 
-  <div class="container">
-    <div class="post">
-      <h2>Título de la Entrada 1</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae urna vitae nisl vulputate interdum. Curabitur sed finibus nulla.</p>
-    </div>
-    <div class="post">
-      <h2>Título de la Entrada 2</h2>
-      <p>Maecenas luctus nisi vel augue sodales, vel gravida mi fermentum. Sed eget turpis sed sem volutpat consequat.</p>
-    </div>
-    <div class="post">
-      <h2>Título de la Entrada 3</h2>
-      <p>Curabitur ac neque eu leo dignissim tincidunt. Etiam sit amet nisi id lorem bibendum ullamcorper nec vitae libero.</p>
-    </div>
-  </div>
+  <main>
+    {%block conten %}
+    <section>
+      <h2>Sobre Nosotros</h2>
+      <p>Somos un equipo apasionado por la tecnología y el diseño. Creamos soluciones digitales modernas, accesibles y visualmente atractivas.</p>
+    </section>
+    
+
+    <section>
+      <h2>Servicios Destacados</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Diseño Web</h3>
+          <p>Interfaces limpias, responsivas y centradas en la experiencia del usuario.</p>
+        </div>
+        <div class="card">
+          <h3>Consultoría</h3>
+          <p>Asesoramiento estratégico para tu presencia digital.</p>
+        </div>
+        <div class="card">
+          <h3>Contenido</h3>
+          <p>Textos y recursos creativos adaptados a tu marca y audiencia.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Últimas Novedades</h2>
+      <p>¡Muy pronto lanzaremos nuestra nueva sección de recursos gratuitos para emprendedores digitales! Suscribite a nuestro boletín para enterarte primero.</p>
+    </section>
+     {% endblock %}
+  </main>
+  
+
+ 
 
   <footer>
-    <p>&copy; 2025 Mi Blog. Todos los derechos reservados.</p>
+    <p>&copy; 2025 Mi Sitio. Todos los derechos reservados.</p>
   </footer>
+
 </body>
 </html>

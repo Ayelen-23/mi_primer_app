@@ -1,10 +1,12 @@
 
 from django.urls import path
-from.views import saludo, saludo_con_templates, inicio
+from.views import inicio, crear_pais, crear_organismo_internacional
 
 urlpatterns = [
     path('', inicio , name='inicio'),
-    path('Hola-mundo/', saludo),
-    path('Hola-mundo-templates/', saludo_con_templates),
+    path('crear_pais/', crear_pais, name= 'crear_pais'),
+    path('organismo_internacional/', crear_organismo_internacional, name='organismo internacional')
     
-]
+    
+    ]
+    
