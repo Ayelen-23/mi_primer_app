@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import date
 # Create your models here.
 
 class Pais(models.Model):
@@ -14,8 +14,18 @@ class Pais(models.Model):
 
 class Organismos(models.Model):
     nombre = models.CharField (max_length= 300)
-    descripcion = models.TextField()
-    paises_miembros = models.ManyToManyField(Pais, related_name = "organismos")
+    descripcion = models.TextField(blank=True, null=True)
+    fecha_inicio = models.DateField(default=date (2000, 1, 1))
+    activo = models.BooleanField(default=True)
+    
+    def __str__ (self):
+        return self.nombre
+    
+class Acuerdos(models.Model):
+    nombre = models.CharField (max_length= 300)
+    descripcion = models.TextField(blank=True, null=True)
+    fecha_inicio = models.DateField(default=date (2000, 1, 1))
+    activo = models.BooleanField(default=True)
     
     def __str__ (self):
         return self.nombre

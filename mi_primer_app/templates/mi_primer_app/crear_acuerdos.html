@@ -1,0 +1,19 @@
+{% extends 'padre.html' %}
+
+{% block title %} Acuerdos Internacionales {% endblock  %}
+
+{% block header%} <h1> Agregar Acuerdos <h1> {% endblock %}
+
+
+
+{% block conten %}
+<h2>Agregar Acuerdo Internacional</h2>
+
+<form method = "POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Guardar</button>
+</form>
+
+{% endblock %}

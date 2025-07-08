@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 
-from .forms import PaisForm, OrganismosForm
-from .models import Pais, Organismos
+from .forms import PaisForm, OrganismosForm, AcuerdosForm
+from .models import Pais, Organismos, Acuerdos
 
 def inicio(request):
     return render(request,'mi_primer_app/inicio.html')
@@ -32,9 +32,9 @@ def crear_organismo_internacional(request):
         if form.is_valid():
             nuevo_organismo = Organismos(
                 nombre = form.cleaned_data["nombre"],
-                siglas= form.cleaned_data['siglas'],
                 descripcion = form.cleaned_data['descripcion'],
-                paises_miembros = form.cleaned_data["paises_miembros"],
+                fecha_inicio =form.cleaned_data["fecha_inicio"],
+                activo = form.cleaned_data['activo']
 
                 )
 
@@ -45,4 +45,35 @@ def crear_organismo_internacional(request):
     return render(request, 'mi_primer_app/crear_organismo.html',{"form":form})
     
     
+def crear_acuerdo_internacional(request):
+    if request.method == "POST":
+        form = AcuerdosForm(request.POST)
+        if form.is_valid():
+            nuevo_acuerdo = Acuerdos(
+                nombre = form.cleaned_data["nombre"],
+                descripcion = form.cleaned_data['descripcion'],
+                fecha_inicio =form.cleaned_data["fecha_inicio"],
+                activo = form.cleaned_data['activo']
+
+                )
+
+            nuevo_acuerdo.save()
+            return redirect('inicio')
+    else:
+        form = OrganismosForm()
+    return render(request, 'mi_primer_app/crear_acuerdos.html',{"form":form})
+
+
+def organismos(request):
+    organismos = Organismos.objects.all()
+    return render(request, "mi_primer_app/organismo.html",{'organismo': organismos})
     
+    
+def buscar_organismos(request):
+    if request.method == 'GET':
+        nombre = request.GET.get('nombre','')
+        organismos = Organismos.objects.filter(nombre__icontains=nombre)
+        return render(request,'mi_primer_app/organismo.html',{'organismos':organismos,'nombre': nombre})
+    
+
+        

@@ -1,0 +1,29 @@
+{% extends 'padre.html' %}
+
+{% block title %} 
+Organismos {% endblock %}
+
+
+
+
+{% block conten %}
+<h2>buscar_organismos</h2>
+
+<form method = "GET" action="{% url 'buscar_organismos' %}">
+    <input type="text" name="nombre" placeholder="buscar organismo..." value="{{ nombre }}">
+
+    
+    <button type="submit">Buscar</button>
+</form>
+
+<h2>Organismos: <h2>
+
+<ul>
+    {%for organismo in organismos %}
+        <li>{{ organismo.nombre }}<li>
+    {% empty %}
+        <li>No hay cursos disponibles.<li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
