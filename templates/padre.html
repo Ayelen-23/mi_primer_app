@@ -127,10 +127,11 @@
   </header>
 
   <nav>
+    <a href="{% url 'inicio' %}">Inicio</a>
     <a href="{% url 'crear_pais' %}">Agregar Pais</a>
-    <a href="#">organismos</a>
-    <a href="#">Acuerdos</a>
-    <a href="#">busqueda</a>
+    <a href="{% url 'organismo_internacional' %}">Organismos</a>
+    <a href="{% url 'acuerdos_internacionales' %}">Acuerdos</a>
+    <a href="{% url 'buscar_organismos' %}">busqueda</a>
   </nav>
 
   <main>

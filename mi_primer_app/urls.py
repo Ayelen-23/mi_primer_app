@@ -5,8 +5,8 @@ from.views import inicio, crear_pais, crear_organismo_internacional, crear_acuer
 urlpatterns = [
     path('', inicio , name='inicio'),
     path('crear_pais/', crear_pais, name= 'crear_pais'),
-    path('organismo_internacional/', crear_organismo_internacional, name='organismo internacional'),
-    path('acuerdos_internacionales/', crear_acuerdo_internacional, name='acuerdo internacional'),
+    path('organismo_internacional/', crear_organismo_internacional, name='organismo_internacional'),
+    path('acuerdos_internacionales/', crear_acuerdo_internacional, name='acuerdos_internacionales'),
     path('organismos/', organismos, name='organismos'),
     path('organismo/buscar/', buscar_organismos, name='buscar_organismos')
     
